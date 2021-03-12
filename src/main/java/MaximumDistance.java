@@ -26,24 +26,29 @@ public class MaximumDistance {
         this.airConditioner = airConditioner;
     }
 
-    double consumptionAC()
-    {
-        if (airConditioner)
-        {
-            return getFuelUsage()*0.1;
-        }
-        else
-        {
-            return 0;
-        }
-    }
+//    double consumptionAC()
+//    {
+//        if (airConditioner)
+//        {
+//            return getFuelUsage()*0.1;
+//        }
+//        else
+//        {
+//            return 0;
+//        }
+//    }
 
 
     double calculateFuelUsage() {
         double calculateFuelUsage;
         double additionaFuelUsageFromPassengers = passengers * 0.05 * getFuelUsage();
-        calculateFuelUsage = consumptionAC() + getFuelUsage() + additionaFuelUsageFromPassengers;
-        return calculateFuelUsage;
+        calculateFuelUsage = getFuelUsage() + additionaFuelUsageFromPassengers;
+        if (airConditioner) {
+            return calculateFuelUsage * 1.1; //10% more fuel consumption
+        }
+        else{
+            return calculateFuelUsage;
+        }
     }
 
     double totalDistance() {
